@@ -1,65 +1,80 @@
-import Image from "next/image";
-
 export default function Home() {
+  const services = [
+    { title: 'LED Screens', desc: 'High-resolution displays for events of any size' },
+    { title: 'Audio Visuals', desc: 'Crystal-clear sound systems and projectors' },
+    { title: 'Emcee Services', desc: 'Professional hosts for corporate and tech events' },
+    { title: 'Walkie Talkies', desc: 'Seamless team coordination during events' },
+    { title: 'Crowd Management', desc: 'Safety and flow management for large gatherings' },
+    { title: 'Entertainment', desc: 'Games, activities, and artist bookings' }
+  ];
+
+  const events = [
+    { name: 'Hello Techies Meetup', desc: 'Co-coordinated 200+ attendee tech conference', img: 'https://placehold.co/300x200?text=Hello+Techies' },
+    { name: 'Chennai Data Circle', desc: 'Managed AV and crowd for data professionals event', img: 'https://placehold.co/300x200?text=Data+Circle' },
+    { name: 'Pro IT Bridge Event', desc: 'Full event coordination with LED screens', img: 'https://placehold.co/300x200?text=Pro+IT+Bridge' }
+  ];
+
+  const gallery = [
+    'https://placehold.co/300x200?text=Event+1',
+    'https://placehold.co/300x200?text=Event+2',
+    'https://placehold.co/300x200?text=Event+3',
+    'https://placehold.co/300x200?text=Event+4'
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      <section className="hero">
+        <h1>NKS Events</h1>
+        <p>Experts in LED Screens, Audio Visuals, Emcee, Walkie Talkies, Crowd Management & Entertainment</p>
+        <a className="btn-primary" href="#register">Enquire Now</a>
+      </section>
+
+      <section>
+        <h2>Our Services</h2>
+        <ul className="cards">
+          {services.map((service, idx) => (
+            <li key={idx}>
+              <h3>{service.title}</h3>
+              <p>{service.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recent Events</h2>
+        <div className="cards">
+          {events.map((event, idx) => (
+            <div key={idx} className="event-card">
+              <img src={event.img} alt={event.name} />
+              <h3>{event.name}</h3>
+              <p>{event.desc}</p>
+            </div>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section>
+        <h2>Gallery</h2>
+        <div className="gallery">
+          {gallery.map((img, i) => (
+            <img key={i} src={img} alt={`Gallery ${i + 1}`} />
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section id="register">
+        <h2>Register Your Event</h2>
+        <form>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="Phone" required />
+          <textarea placeholder="Event Details" required />
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+
+      <a className="whatsapp-chat" href="https://wa.me/919876543210?text=Hello%20NKS%20Events" target="_blank">WhatsApp Chat</a>
+    </main>
   );
 }
